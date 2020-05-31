@@ -56,12 +56,9 @@
 
 # }}}
 
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from datetime import datetime, timedelta
-import code
+from reference import code
 from code.vertex import Vertex
 from code.helpers import *
 from code.measurement_type import MeasurementType
