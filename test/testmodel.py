@@ -58,15 +58,15 @@
 
 
 from datetime import datetime, timedelta, date, time
-
-from vertex import Vertex
-from neighbor_model import Neighbor
-from local_asset_model import LocalAsset
-from market import Market
-from time_interval import TimeInterval
-from interval_value import IntervalValue
-from measurement_type import MeasurementType
-from TransactiveNode import TransactiveNode
+from reference import code
+from code.vertex import Vertex
+from code.neighbor_model import Neighbor
+from code.local_asset_model import LocalAsset
+from code.market import Market
+from code.time_interval import TimeInterval
+from code.interval_value import IntervalValue
+from code.measurement_type import MeasurementType
+from code.TransactiveNode import TransactiveNode
 
 
 def test_schedule():
@@ -87,6 +87,8 @@ def test_schedule():
     # NOTE: Function Hours() corrects behavior of Matlab hours().
     st = datetime.combine(date.today(), time()) + timedelta(hours=20)
     ti = TimeInterval(at, dur, mkt, mct, st)
+    
+    print(ti)
 
     #   Save the time interval
     test_mkt.timeIntervals = [ti]
@@ -125,6 +127,7 @@ def test_schedule():
     # test_obj.model = test_mdl
     # test_mdl.object = test_obj
     test_mdl.maximumPower = 100
+    test_mdl.scheduleCalculated = True
 
     print('- running test with a LocalAsset:')
 
@@ -230,5 +233,5 @@ if __name__ == '__main__':
     # Test the sealed AbstractModel methods
     print('Running tests in testmodel.py\n')
     test_schedule()
-    test_update_costs()
+#    test_update_costs()
     print('Tests in testmodel.py ran to completion.\n')

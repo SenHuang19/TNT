@@ -58,7 +58,7 @@
 
 
 import logging
-from volttron.platform.agent import utils
+
 
 from .helpers import *
 from .measurement_type import MeasurementType
@@ -68,8 +68,6 @@ from .const import *
 from .vertex import Vertex
 from .timer import Timer
 
-utils.setup_logging()
-_log = logging.getLogger(__name__)
 
 
 class BulkSupplier_dc(Neighbor):

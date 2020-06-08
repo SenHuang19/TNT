@@ -59,15 +59,15 @@
 
 from datetime import date, time
 # from dateutil import relativedelta    # NOT AVAILABLE??
-
-from vertex import Vertex
-from interval_value import IntervalValue
-from measurement_type import MeasurementType
-from helpers import *
-from market import Market
-from time_interval import TimeInterval
-from local_asset_model import LocalAsset
-from TransactiveNode import TransactiveNode
+from reference import code
+from code.vertex import Vertex
+from code.interval_value import IntervalValue
+from code.measurement_type import MeasurementType
+from code.helpers import *
+from code.market import Market
+from code.time_interval import TimeInterval
+from code.local_asset_model import LocalAsset
+from code.TransactiveNode import TransactiveNode
 
 
 def test_assign_transition_costs():
@@ -127,6 +127,8 @@ def test_calculate_reserve_margin():
         print('  The test ran without errors')
     except RuntimeWarning as cause:
         print('  The test encountered errors', cause)
+        
+    print(test_model.reserveMargins[0].value)
 
     assert len(test_model.reserveMargins) == 1, 'An unexpected number of results were stored'
 
@@ -168,7 +170,7 @@ def test_calculate_reserve_margin():
         print('  The test ran without errors')
     except RuntimeWarning as cause:
         print('  The test encountered errors', cause)
-
+    print(test_model.reserveMargins[0].value)
     assert test_model.reserveMargins[0].value == 0, 'The method should have assigned zero for a neg. result'
 
     # Success.
@@ -854,14 +856,14 @@ def test_get_extended_prices():
 
 if __name__ == '__main__':
     print('Running tests in testlocalasset.py\n')
-    test_assign_transition_costs()
-    test_calculate_reserve_margin()  # Done
-    test_cost()  # Missing - low priority
-    test_engagement_cost()  # Missing - low priority
-    test_schedule_engagement()  # Done - low priority
-    test_schedule_power()  # Done - high priority
-    test_update_dual_costs()  # Missing - high priority
-    test_update_production_costs()  # Missing - high priority
-    test_update_vertices()  # Missing - high priority
-    test_get_extended_prices()
+#    test_assign_transition_costs()
+    # test_calculate_reserve_margin()  # Done
+    # test_cost()  # Done
+    test_engagement_cost()  # Done
+    # test_schedule_engagement()  # Done - low priority
+    # test_schedule_power()  # Done - high priority
+    # test_update_dual_costs()  # Missing - high priority
+    # test_update_production_costs()  # Missing - high priority
+    # test_update_vertices()  # Missing - high priority
+    # test_get_extended_prices()
     print('Tests in testlocalasset.py ran to completion.\n')
